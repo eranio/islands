@@ -26,6 +26,7 @@ class BoardViewModel : ViewModel() {
                     array[i][j] = CellModel(0)
                 } else {
                     // this code generates numbers from 0 to 4, where 1-4 will be converted to 'Empty cell' (0) and 0 will be black cell
+                    // That is to prevent spread of 50/50 of black and whites
                     array[i][j] = when (Random.nextInt(0, 4)) {
                         0 -> CellModel(1)
                         else -> CellModel(0)
@@ -46,7 +47,7 @@ class BoardViewModel : ViewModel() {
     }
 
     fun onSolveClicked() {
-        islandsCount = IslandUtils.solveIslandsB(board)
+        islandsCount = IslandUtils.solveIslands(board)
         board.setIsSolved(true)
         islandsCountLiveData.postValue(islandsCount)
     }

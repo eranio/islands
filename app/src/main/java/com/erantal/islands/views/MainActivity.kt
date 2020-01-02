@@ -25,26 +25,25 @@ class MainActivity : AppCompatActivity() {
     private fun setClickListeners() {
         randomize_btn.setOnClickListener {
             getUserInput()?.let {
-                val width = it.first
-                val height = it.second
-                val intent = Intent(this, IslandsActivity::class.java)
-                intent.putExtra(IslandsActivity.WIDTH_KEY, width)
-                intent.putExtra(IslandsActivity.HEIGHT_KEY, height)
-                startActivity(intent)
+                openIslandActivity(it, false)
             }
         }
 
         draw_btn.setOnClickListener {
             getUserInput()?.let {
-                val width = it.first
-                val height = it.second
-                val intent = Intent(this, IslandsActivity::class.java)
-                intent.putExtra(IslandsActivity.WIDTH_KEY, width)
-                intent.putExtra(IslandsActivity.HEIGHT_KEY, height)
-                intent.putExtra(IslandsActivity.BONUS_DRAW_KEY, true)
-                startActivity(intent)
+                openIslandActivity(it, true)
             }
         }
+    }
+
+    private fun openIslandActivity(dimensions: Pair<Int, Int>, bonus: Boolean) {
+        val width = dimensions.first
+        val height = dimensions.second
+        val intent = Intent(this, IslandsActivity::class.java)
+        intent.putExtra(IslandsActivity.WIDTH_KEY, width)
+        intent.putExtra(IslandsActivity.HEIGHT_KEY, height)
+        intent.putExtra(IslandsActivity.BONUS_DRAW_KEY, bonus)
+        startActivity(intent)
     }
 
     private fun getUserInput(): Pair<Int, Int>? {
