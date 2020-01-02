@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.erantal.islands.R
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
@@ -14,6 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setClickListeners()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        bitmap_size.text.clear()
     }
 
     private fun setClickListeners() {
@@ -48,15 +54,25 @@ class MainActivity : AppCompatActivity() {
                 try {
                     val width = dimensions[0].toInt()
                     val height = dimensions[1].toInt()
+                    showErrorMessage(false)
                     return Pair(width, height)
 
                 } catch (exception: Exception) {
+                    showErrorMessage(true)
                     Log.d(this.toString(), getString(R.string.invalid_input))
                 }
             } else {
+                showErrorMessage(true)
                 Log.d(this.toString(), getString(R.string.invalid_input))
             }
         }
         return null
+    }
+
+    private fun showErrorMessage(show: Boolean) {
+        error_message.visibility = when (show) {
+            true -> View.VISIBLE
+            false -> View.INVISIBLE
+        }
     }
 }
