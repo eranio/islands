@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">islands</string>
+    <string name="input_text">Please enter bitmap size:</string>
+    <string name="randomize">Randomize</string>
+    <string name="input_hint">Bitmap size: n, m</string>
+    <string name="solve">Solve</string>
+    <string name="result_text">Found %1$d Islands</string>
+    <string name="draw">Bonus Draw</string>
+    <string name="restart">Restart</string>
+    <string name="invalid_input">user input is invalid</string>
+</resources>
