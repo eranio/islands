@@ -59,13 +59,12 @@ class MainActivity : AppCompatActivity() {
 
                 } catch (exception: Exception) {
                     showErrorMessage(true)
-                    Log.d(this.toString(), getString(R.string.invalid_input))
                 }
             } else {
                 showErrorMessage(true)
-                Log.d(this.toString(), getString(R.string.invalid_input))
             }
         }
+        showErrorMessage(true)
         return null
     }
 
@@ -73,6 +72,9 @@ class MainActivity : AppCompatActivity() {
         error_message.visibility = when (show) {
             true -> View.VISIBLE
             false -> View.INVISIBLE
+        }
+        if (show) {
+            Log.d(this.toString(), getString(R.string.invalid_input))
         }
     }
 }
