@@ -42,7 +42,7 @@ object IslandUtils {
 
     private fun isSafe(board: Board, row: Int, col: Int, visitedArray: Array<Array<Boolean>>) : Boolean{
         board.getCells()?.let { cells ->
-            return (row >= 0) && (row < board.getHeight()) && (col >=0) && (col < board.getWidth()) && (cells[row][col].value == 1 && !visitedArray[row][col])
+            return (row >= 0) && (row < board.getWidth()) && (col >=0) && (col < board.getHeight()) && (cells[row][col].value == 1 && !visitedArray[row][col])
         }
         return false
     }
